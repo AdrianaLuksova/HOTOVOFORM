@@ -1,0 +1,39 @@
+{% from "macros/fields.html" import render_input_field, render_password_field, render_checkbox_field, render_submit %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h3>Log in</h3>
+  <form method="POST" id='login-form'>
+    {{ form.hidden_tag() }}
+    {{ render_input_field(form.name) }}
+    {{ render_input_field(form.surename) }}
+    {{ render_submit() }}
+  </form>
+  {{ message }}
+  <br>
+  <h3>Entered Users</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surename</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.surename }}</td>
+          <td>
+            <a href="/edit_user/{{user.user_id}} ">Edit</a>
+          </td>
+          <td>
+            <a href="/delete_user/{{user.user_id}} ">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %} 
