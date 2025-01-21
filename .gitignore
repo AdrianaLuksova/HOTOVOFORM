@@ -1,6 +1,6 @@
 *.py[cod]
 .pytest_cache
-site.db
+# site.db
 # Packages
 *.egg
 *.egg-info
